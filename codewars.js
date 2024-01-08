@@ -12,6 +12,11 @@ accum("zpglnRxqenU");
 accum("NyffsGeyylB");
 
 // Best practice solution
-function accum1(n) {}
+function accum1(n) {
+	return n
+		.split("")
+		.map((c, i) => c.toUpperCase() + c.toLowerCase().repeat(i))
+		.join("-");
+}
 accum1("zpglnRxqenU");
 accum1("NyffsGeyylB");
