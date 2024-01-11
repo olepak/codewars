@@ -1,20 +1,28 @@
-function validatePIN(pin) {
-	if (pin.match(/\D/g) !== null || (pin.length !== 4 && pin.length !== 6)) {
-		return false;
-	} else return true;
+function openSenior(data) {
+	let result = [];
+	for (value of data) {
+		if (value[0] >= 55 && value[1] > 7) {
+			result.push("Senior");
+		} else result.push("Open");
+	}
+	return result;
 }
-validatePIN("1234");
-validatePIN("12345");
-validatePIN("-1.232");
-validatePIN(".232");
+openSenior([
+	[45, 12],
+	[55, 21],
+	[19, -2],
+	[104, 20],
+]); //?
 
 // Best practice
-
-function validatePIN2(pin) {
-	return /^(\d{4}|\d{6})$/.test(pin);
+function openSenior2(data) {
+	return data.map(([age, handicap]) =>
+		age > 54 && handicap > 6 ? "Senior" : "Open"
+	);
 }
-
-validatePIN2("1234");
-validatePIN2("12345");
-validatePIN2("-1,232");
-validatePIN2(".232");
+openSenior2([
+	[45, 12],
+	[55, 21],
+	[19, -2],
+	[104, 20],
+]); //?
