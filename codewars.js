@@ -1,28 +1,24 @@
-function openSenior(data) {
-	let result = [];
-	for (value of data) {
-		if (value[0] >= 55 && value[1] > 7) {
-			result.push("Senior");
-		} else result.push("Open");
+function longest(s1, s2) {
+	let sorted = (s1 + s2).split("").sort().join("");
+	let unique = "";
+	for (char of sorted) {
+		if (unique.indexOf(char) === -1) {
+			unique += char;
+		}
 	}
-	return result;
+	return unique;
 }
-openSenior([
-	[45, 12],
-	[55, 21],
-	[19, -2],
-	[104, 20],
-]); //?
 
-// Best practice
-function openSenior2(data) {
-	return data.map(([age, handicap]) =>
-		age > 54 && handicap > 6 ? "Senior" : "Open"
-	);
+longest("aretheyhere", "yestheyarehere");
+longest("loopingisfunbutdangerous", "lessdangerousthancoding");
+
+// Best practice without usage of Set
+
+function longest2(s1, s2) {
+	let sorted = (s1 + s2).split("").sort();
+	return sorted
+		.filter((value, index, arr) => value !== arr[index - 1])
+		.join("");
 }
-openSenior2([
-	[45, 12],
-	[55, 21],
-	[19, -2],
-	[104, 20],
-]); //?
+longest2("aretheyhere", "yestheyarehere");
+longest2("loopingisfunbutdangerous", "lessdangerousthancoding");
