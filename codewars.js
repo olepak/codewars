@@ -1,34 +1,24 @@
-String.prototype.toAlternatingCase = function () {
-	let toggledString = "";
-	for (let i = 0; i < this.length; i++) {
-		if (this.charAt(i) === this.charAt(i).toUpperCase()) {
-			toggledString += this.charAt(i).toLowerCase();
-		} else toggledString += this.charAt(i).toUpperCase();
+function years(humanYears) {
+	let result = [];
+	result[0] = humanYears;
+	for (let i = 1; i <= humanYears; i++) {
+		if (i == 1) {
+			result[1] = result[2] = 15;
+		} else if (i === 2) {
+			result[1] += 9;
+			result[2] += 9;
+		} else if (i > 2) {
+			result[1] += 4;
+			result[2] += 5;
+		}
 	}
-	return toggledString;
-};
-let string = "hello world";
-let alternatedString = string.toAlternatingCase();
-let string2 = "HELLO WORLD";
-let alternatedString2 = string2.toAlternatingCase();
-let string3 = "HeLLo WoRlD";
-let alternatedString3 = string3.toAlternatingCase();
-let string4 = "12345";
-let alternatedString4 = string4.toAlternatingCase();
+	return result;
+}
 
+years(10);
 // Best practice
-String.prototype.toAlternatingCase1 = function () {
-	return this.split("")
-		.map((a) =>
-			a === a.toUpperCase() ? a.toLocaleLowerCase() : a.toUpperCase()
-		)
-		.join("");
-};
-let string1 = "hello world";
-let alternatedString1 = string.toAlternatingCase1();
-let string21 = "HELLO WORLD";
-let alternatedString21 = string2.toAlternatingCase1();
-let string31 = "HeLLo WoRlD";
-let alternatedString31 = string3.toAlternatingCase1();
-let string41 = "12345";
-let alternatedString41 = string4.toAlternatingCase1();
+//var humanYearsCatYearsDogYears = function(y) {
+// if (y == 1) return [1, 15, 15]
+//if (y == 2) return [2, 24, 24]
+//return [y, (y-2) * 4 + 24, (y-2) * 5 + 24]
+//}
