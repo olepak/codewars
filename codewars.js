@@ -1,17 +1,28 @@
-function stray(numbers) {
-	let sorted = numbers.sort((a, b) => a - b);
-	return sorted[0] !== sorted[1] ? sorted[0] : sorted[sorted.length - 1];
+function spinWords(string) {
+	let stringSplit = string.split(" ");
+	let result = "";
+	for (let word of stringSplit) {
+		if (word.length >= 5) {
+			result += " " + word.split("").reverse().join("");
+		} else result += " " + word;
+	}
+	return result.trim();
 }
-stray([1, 2, 1]);
-stray([17, 17, 3, 17, 17]);
+spinWords("Welcome");
+spinWords("Hey fellow warriors");
+spinWords("This is a test");
+spinWords("This is another test");
 
 // Best practice
-function stray2(numbers) {
-	for (let i in numbers) {
-		if (numbers.indexOf(numbers[i]) === numbers.lastIndexOf(numbers[i])) {
-			return numbers[i];
-		}
-	}
+function spinWords2(string) {
+	return string
+		.split(" ")
+		.map((word) => {
+			return word.length > 4 ? word.split("").reverse().join("") : word;
+		})
+		.join(" ");
 }
-stray2([1, 2, 1]);
-stray2([17, 17, 3, 17, 17]);
+spinWords2("Welcome");
+spinWords2("Hey fellow warriors");
+spinWords2("This is a test");
+spinWords2("This is another test");
