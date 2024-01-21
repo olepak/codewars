@@ -1,28 +1,28 @@
-function spinWords(string) {
-	let stringSplit = string.split(" ");
-	let result = "";
-	for (let word of stringSplit) {
-		if (word.length >= 5) {
-			result += " " + word.split("").reverse().join("");
-		} else result += " " + word;
+function switchItup(number) {
+	switch (number) {
+		case 1:
+			return "One";
+		case 2:
+			return "Two";
+		case 3:
+			return "Three";
+		case 4:
+			return "Four";
+		case 5:
+			return "Five";
+		case 6:
+			return "Six";
+		case 7:
+			return "Seven";
+		case 8:
+			return "Eight";
+		case 9:
+			return "Nine";
 	}
-	return result.trim();
 }
-spinWords("Welcome");
-spinWords("Hey fellow warriors");
-spinWords("This is a test");
-spinWords("This is another test");
+switchItup(0);
 
 // Best practice
-function spinWords2(string) {
-	return string
-		.split(" ")
-		.map((word) => {
-			return word.length > 4 ? word.split("").reverse().join("") : word;
-		})
-		.join(" ");
-}
-spinWords2("Welcome");
-spinWords2("Hey fellow warriors");
-spinWords2("This is a test");
-spinWords2("This is another test");
+
+switchItup2 = (n) => ["zero", "one", "two", "three", "four"][n];
+switchItup2(0);
