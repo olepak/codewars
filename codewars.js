@@ -1,28 +1,28 @@
-function switchItup(number) {
-	switch (number) {
-		case 1:
-			return "One";
-		case 2:
-			return "Two";
-		case 3:
-			return "Three";
-		case 4:
-			return "Four";
-		case 5:
-			return "Five";
-		case 6:
-			return "Six";
-		case 7:
-			return "Seven";
-		case 8:
-			return "Eight";
-		case 9:
-			return "Nine";
+function dontGiveMeFive(start, end) {
+	let array = [];
+	for (let i = start; i <= end; i++) {
+		array.push(i);
 	}
+	return array
+		.filter((value) => value % 5 !== 0 || value % 10 === 0)
+		.filter((n) => n == RegExp(!/[50-59]/)).length;
 }
-switchItup(0);
 
-// Best practice
+dontGiveMeFive(4, 17);
+dontGiveMeFive(1, 90);
 
-switchItup2 = (n) => ["zero", "one", "two", "three", "four"][n];
-switchItup2(0);
+//Best practice
+
+function dontGiveMeFive2(start, end) {
+	let count = [];
+	for (let i = start; i <= end; i++) {
+		if (!/5/.test(i)) {
+			count.push(i);
+		}
+	}
+	return count;
+}
+dontGiveMeFive2(1, 90);
+
+// Another nice solution
+//function
