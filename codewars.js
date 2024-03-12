@@ -12,3 +12,9 @@ function oddNumbers(n) {
 	return triangleArray[n - 1].reduce((total, value) => total + value);
 }
 oddNumbers(42);
+
+// Best practice https://www.codewars.com/kata/55fd2d567d94ac3bc9000064/solutions/javascript
+function oddNumbersBest(n) {
+	return Math.pow(n, 3);
+}
+oddNumbersBest(42);
