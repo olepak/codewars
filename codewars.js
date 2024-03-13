@@ -1,7 +1,11 @@
-function checkCoupon(enteredCode, correctCode, currentDate, expirationDate) {
-	return (
-		enteredCode === correctCode &&
-		Date.parse(expirationDate) > Date.parse(currentDate)
-	);
+function rowWeights(array) {
+	const oddArray = [];
+	for (let i = 1; i < array.length; i++) {
+		if (i % 2 !== 0) {
+			oddArray.push(array.splice(i, 1));
+		}
+	}
+	return oddArray.flat();
 }
-checkCoupon("123", "123", "September 5, 2014", "October 1, 2014");
+
+rowWeights([13, 27, 49, 15]);
