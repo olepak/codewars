@@ -1,29 +1,22 @@
-function rowWeights(array) {
-	const oddArray = [];
-	for (let i = 1; i < array.length; i++) {
-		if (i % 2 !== 0) {
-			oddArray.push(array.slice(i, i + 1));
-			array[i] = 0;
-		}
-	}
-
-	return [
-		[array.reduce((tot, val) => tot + val, 0)],
-		[oddArray.flat().reduce((tot, val) => tot + val, 0)],
-	].flat();
+function sumOfMinimum(arr) {
+	let sum = 0;
+	arr.forEach((element) => {
+		element.sort((a, b) => a - b);
+		sum += element[0];
+	});
+	return sum;
 }
-
-rowWeights([13, 27, 49]);
-
-//Best practice
-function rowWeights2(array) {
-	let t1 = array
-		.filter((value, index) => index % 2 === 0)
-		.reduce((total, value) => total + value, 0);
-	let t2 = array
-		.filter((value, index) => index % 2 !== 0)
-		.reduce((total, value) => total + value, 0);
-	return [t1, t2];
+sumOfMinimum([
+	[7, 9, 8, 6, 2],
+	[6, 3, 5, 4, 3],
+	[5, 8, 7, 4, 5],
+]); //?
+// Best practice
+function sumOfMinimum2(arr) {
+	return arr.reduce((tot, val) => tot + Math.min(...val), 0);
 }
-
-rowWeights2([13, 27, 49]);
+sumOfMinimum2([
+	[7, 9, 8, 6, 2],
+	[6, 3, 5, 4, 3],
+	[5, 8, 7, 4, 5],
+]); //?
