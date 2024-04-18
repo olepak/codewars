@@ -1,22 +1,16 @@
-function sumOfMinimum(arr) {
-	let sum = 0;
-	arr.forEach((element) => {
-		element.sort((a, b) => a - b);
-		sum += element[0];
-	});
-	return sum;
+function maxMultiple(divisor, bound) {
+	let arrayOfIntegers = [];
+	for (let i = 1; i <= bound; i++) {
+		if (i % divisor === 0) {
+			arrayOfIntegers.push(i);
+		}
+	}
+	return Math.max(...arrayOfIntegers);
 }
-sumOfMinimum([
-	[7, 9, 8, 6, 2],
-	[6, 3, 5, 4, 3],
-	[5, 8, 7, 4, 5],
-]); //?
+maxMultiple(3, 10);
+
 // Best practice
-function sumOfMinimum2(arr) {
-	return arr.reduce((tot, val) => tot + Math.min(...val), 0);
+function maxMultipleBestPractice(divisor, bound) {
+	return bound - (bound % divisor);
 }
-sumOfMinimum2([
-	[7, 9, 8, 6, 2],
-	[6, 3, 5, 4, 3],
-	[5, 8, 7, 4, 5],
-]); //?
+maxMultipleBestPractice(3, 10);
